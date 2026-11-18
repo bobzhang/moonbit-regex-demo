@@ -1,3 +1,5 @@
+///|
+#derive(Debug)
 enum Regex {
   Seq(Regex, Regex)
   Alt(Regex, Regex)
@@ -6,17 +8,32 @@ enum Regex {
   Opt(Regex) // e?
   Char(Char)
   Empty // matches empty string
-} derive(Show)
+}
 
-type Label String derive(Eq, Hash, Show)
+///|
+#derive(Eq, Hash, Debug)
+struct Label(String)
 
-let label_counter : Ref[Int] = { val: 0 }
+///|
+let label_counter : Ref[Int32] = { val: 0, }
 
+///|
 fn gen_label() -> Label {
   label_counter.val += 1
   Label("__label\{label_counter.val}")
 }
 
+///|
 pub fn reset_label_counter() -> Unit {
   label_counter.val = 0
+}
+
+///|
+impl Show for Regex with fn output(self, logger) {
+  logger.write_object(Repr(self))
+}
+
+///|
+impl Show for Label with fn output(self, logger) {
+  logger.write_object(Repr(self))
 }

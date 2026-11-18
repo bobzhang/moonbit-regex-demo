@@ -1,0 +1,41 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/hello/lib"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn assemble(Program) -> MProgram
+
+pub fn compile(Regex) -> Program
+
+pub fn interpret(State, MProgram) -> Bool
+
+pub fn reset_label_counter() -> Unit
+
+// Errors
+
+// Types and methods
+#derive(@debug.Debug)
+type Instr
+
+#derive(Eq, Hash, @debug.Debug)
+type Label
+
+type MProgram
+
+#derive(@debug.Debug)
+type MachineInstr
+
+type Program
+
+#derive(@debug.Debug)
+type Regex
+
+#derive(Default)
+type State
+
+// Type aliases
+
+// Traits

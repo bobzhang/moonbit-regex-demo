@@ -50,5 +50,5 @@ fn compile_aux(regex : Regex) -> Array[Instr] {
 
 ///|
 pub fn compile(regex : Regex) -> Program {
-  [..compile_aux(regex), Match]
+  Program([..compile_aux(regex), Match])
 }
