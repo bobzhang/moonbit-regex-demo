@@ -1,9 +1,12 @@
+///|
+#derive(Default)
 struct State {
-  pc : Int // program counter
-  sp : Int // string pointer
+  pc : Int32 // program counter
+  sp : Int32 // string pointer
   data : String
-} derive(Default)
+}
 
+///|
 pub fn interpret(state : State, instr : MProgram) -> Bool {
   fn recursive(pc, sp) {
     // if state  
