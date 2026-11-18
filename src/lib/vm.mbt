@@ -10,12 +10,12 @@ struct State {
 pub fn interpret(state : State, instr : MProgram) -> Bool {
   fn recursive(pc, sp) {
     // if state  
-    match instr._[pc] {
+    match instr.0[pc] {
       MChar(c) => {
-        if sp >= state.data.length() || state.data[sp] != c {
+        if sp >= state.data.length() || state.data.get_char(sp) != Some(c) {
           return false
         }
-        recursive(pc + 1, sp + 1)
+        recursive(pc + 1, sp + c.utf16_len())
       }
       MMatch => return true
       MJmp(l) => recursive(l, sp)
