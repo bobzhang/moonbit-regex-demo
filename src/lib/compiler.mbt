@@ -1,3 +1,4 @@
+///|
 fn compile_aux(regex : Regex) -> Array[Instr] {
   match regex {
     Empty => []
@@ -47,6 +48,7 @@ fn compile_aux(regex : Regex) -> Array[Instr] {
   }
 }
 
+///|
 pub fn compile(regex : Regex) -> Program {
   [..compile_aux(regex), Match]
 }
